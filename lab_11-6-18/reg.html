@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Registration form</title>
+	</head>
+	
+	<body>
+			 
+		<form action="#">
+		
+			<table>
+			  <tr>
+				<td colspan="2"><h1>Sign Up</h1></td>
+			  </tr>
+			  <tr>
+				<td colspan="2"><h3>It's free and always will be</h3></td>
+			  </tr>
+			  <tr>
+				<td><input type="text" name="fname" placeholder="First Name"></td><td><input type="text" name="lname" placeholder="Last Name"></td>
+			  </tr>
+			  <tr>
+				<td colspan="2"><input type="text" name="email" placeholder="Email" size="45"></td>
+			  </tr>
+			  <tr>
+				<td colspan="2"><input type="text" name="remail" placeholder="Re-enter Email" size="45"></td>
+			  </tr>
+			  <tr>
+				<td colspan="2"><input type="text" name="pass" placeholder="Password" size="45"></td>
+			  </tr>
+			  <tr>
+				<td colspan="2"><input type="text" name="cpass" placeholder="Confirm Password" size="45"></td>
+			  </tr>
+			  
+			  <tr>
+				<td colspan="2"><h3>Birthday :</h3></td>
+			  </tr>
+			  <tr>
+				<td>	
+					<select>
+					  <option value="january">January</option>
+					  <option value="february">February</option>
+					  <option value="march">March</option>
+					  <option value="april">April</option>
+					  <option value="may">May</option>
+					  <option value="june">June</option>
+					  <option value="july">July</option>
+					  <option value="august">August</option>
+					  <option value="september">September</option>
+					  <option value="october">October</option>
+					  <option value="november">November</option>
+					  <option value="december">December</option>
+					</select>
+					  <?php
+							echo "<select>";
+							for ($x = 0; $x <= 10; $x++) 
+								{
+									echo "<option value='.$x'>".$x."</option><br>";
+								}
+							echo "</select>";
+					   ?>				
+				</td>
+			  </tr>
+			  
+			  <tr>
+				  <td colspan="2">
+					  <input type="radio" name="gender" value="male" checked> Male
+					  <input type="radio" name="gender" value="female"> Female
+					  <input type="radio" name="gender" value="other"> Other
+				  </td>
+			  </tr>
+			  <tr>
+				  <td align="center"><input type="reset" value="Cancel"></td>
+				  <td align="center"><input type="submit" value="Submit"></td>
+			  </tr>	
+			  <tr>
+				  <td align="center"><a href="index.html">Home</td>
+			  </tr>	
+		  </table>
+		  
+		</form> 
+	</body>
+</html>
