@@ -1,0 +1,153 @@
+<html> 
+<head> 
+ <title> Rules of Craps </title>
+	<style>
+		table#t1
+		{border: 1px solid black;border-collapse: collapse;width:60%;border-spacing: 5px;text-align: center;}
+		table#t2
+		{border: 1px solid black;border-collapse: collapse;width:60%;text-align: center;}
+		td#t2
+		{border: 5px solid black;border-collapse: collapse;text-align: center;}
+		img
+		{width:80px;height:80px; padding: 5px;}
+	</style>
+	<script TYPE="text/javascript">
+	
+		var firsttime=true, remember=0, previoussum=0, secondsum="";
+		
+		function rollDice() 
+		{
+			var die1, die2, workSum, state = "";
+			die1 = Math.floor( 1 + Math.random() * 6 );
+			die2 = Math.floor( 1 + Math.random() * 6 );
+			
+			workSum = die1 + die2;
+			
+			document.getElementById("d1").innerHTML= '<img src="img/Alea_'+die1+'.png">'; 
+			document.getElementById("d2").innerHTML= '<img src="img/Alea_'+die2+'.png">'; 
+			document.getElementById("total").innerHTML= workSum;
+			
+			
+			
+			if(firsttime)
+			{			
+				if( workSum == 7 || workSum == 11 )
+				{
+					state = "WIN";
+					document.getElementById("status").innerHTML= state;
+					firsttime=false;					
+				}
+				else if( workSum == 2 || workSum == 3 || workSum == 12 )
+				{
+					state = "Lose";
+					document.getElementById("status").innerHTML = state;
+					firsttime=false;
+				}
+				else
+				{
+					state = "";
+					document.getElementById("status").innerHTML = "";
+					remember = workSum;
+					firsttime=false;
+				}
+				previoussum = workSum;
+			}
+			else if(firsttime == false)
+			{
+				if( previoussum == 7 || previoussum == 11 || secondsum=="WIN" || state=="WIN")
+				{
+					alert("You Won the Game\nGame restarted");
+					document.getElementById("status").innerHTML = "";
+					firsttime=true;
+					secondsum="";
+					state="";
+					document.getElementById("d1").innerHTML= ''; 
+					document.getElementById("d2").innerHTML= ''; 
+					document.getElementById("total").innerHTML= "";
+				}
+				else if( previoussum == 2 || previoussum == 3 || previoussum == 12 || secondsum=="Lose" || state=="Lose")
+				{
+					alert("You Lost the Game\nGame restarted");
+					document.getElementById("status").innerHTML = "";
+					firsttime=true;
+					secondsum="";
+					state="";
+					document.getElementById("d1").innerHTML= ''; 
+					document.getElementById("d2").innerHTML= ''; 
+					document.getElementById("total").innerHTML= "";
+				}
+				else
+				{
+					alert("To Win you need "+previoussum+" dice number\n Good Luck!");
+					
+					if( workSum == remember)
+					{
+						state = "WIN";
+						document.getElementById("status").innerHTML= state;
+						firsttime=false;
+						secondsum="WIN";
+					}
+					else if( workSum == 7 || workSum == 11)
+					{
+						state = "Lose";
+						document.getElementById("status").innerHTML = state; 
+						firsttime=false;
+						secondsum="Lose";
+					}
+				}
+			}
+		}
+	</script>
+</head> 
+<body> 
+	<form>
+		<table id="t1" align="center">
+			<tr>
+				<td colspan="3"><h2 style="color:red" align="center"><u>Rules of Craps Game</u></h2></td>
+			</tr>
+			<tr><td colspan="3">
+			<table id="t2" align="center">
+			
+				<tr> 
+					<td id="t2">Die 1</td><td id="t2" >Die 2</td><td id="t2" >Total</td> 
+					<td rowspan="2" id="t2"> 
+						<input type="button" name="roll" value="Roll Dice!" style="width:100px;height:100px;background-color:yellow;" onclick="rollDice()">
+					</td>
+				</tr>
+				<tr>
+					<td id="t2" ><div id="d1"></div></td> 
+					<td id="t2" ><div id="d2"></div></td> 
+					<td id="t2" ><div id="total" style="font-size: 300%"></div></td>
+				</tr>
+				
+			</table>
+			</tr></td>
+			<tr>
+				<td align="center" colspan="3">
+					
+				</td>
+			</tr>
+			<tr>
+				<td><h2 align="left" style="font-size: 200%">Status :</h2></td>
+				<td colspan="2"><h2 style="color:red" align="left"><div id="status" style="font-size: 200%"></div></h2></td>
+			</tr>
+			<tr>
+				<td align="left" colspan="3">
+					<b>First roll:</b>
+					<ul>
+					  <li>7 or 11 is a win</li>
+					  <li>2, 3, or 12 is a lose</li>
+					  <li>otherwise, roll becomes your point</li>
+					</ul>
+					<b>Subsequent rolls:</b>
+					<ul>
+					  <li>rolling your point is a win</li>
+					  <li>7 or 11 is a lose</li>
+					  <li>otherwise continue to roll</li>
+					</ul>		
+				</td>
+			</tr>
+		</table>
+	</form>
+</body> 
+</html>  
